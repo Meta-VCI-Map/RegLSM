@@ -69,7 +69,7 @@ end
     
 %% Writing elastix command for registration
     fid = fopen(strcat(Dir,'\batch\elastix_CT_SC.bat'),'wt');
-    CMD_CT_Rorden = [Dir_code,'\Elastix\elastix.exe -f' blanks(1) SC blanks(1) '-m' blanks(1) '"' CT_histeq '"' blanks(1) reg_CT_Rorden blanks(1) '-out' blanks(1) '"' strcat(Dir,'\CT_to_SC') '"'];
+    CMD_CT_Rorden = ['"' Dir_code '\Elastix\elastix.exe' '"' ' -f' blanks(1) '"' SC '"' blanks(1) '-m' blanks(1) '"' CT_histeq '"' blanks(1) reg_CT_Rorden blanks(1) '-out' blanks(1) '"' strcat(Dir,'\CT_to_SC') '"'];
     fprintf(fid, '%s\n', CMD_CT_Rorden);
     fclose(fid);
     winopen(strcat(Dir,'\batch\elastix_CT_SC.bat'));
