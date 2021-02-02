@@ -86,6 +86,11 @@ function OpenImage_Callback(hObject, eventdata, handles)
 if isempty(filename)||length(filename)<=1
     return;
 end
+
+if isa(filename, 'char') % only 1 file selected
+    filename = cellstr(filename);
+end
+
 Dir=cell(length(filename),1);
 
 for i=1:length(filename)
