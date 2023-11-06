@@ -31,8 +31,9 @@
 (WriteTransformParametersEachIteration "false")
 (WriteResultImage "true")
 (CompressResultImage "true")
-(WriteResultImageAfterEachResolution "false") 
-(ResultImageFormat "nii")
+(WriteResultImageAfterEachResolution "false")
+(ResultImageFormat "nii.gz")
+(ResultImagePixelType "float")
 (ShowExactMetricValue "false")
 
 //Maximum number of iterations in each resolution level:

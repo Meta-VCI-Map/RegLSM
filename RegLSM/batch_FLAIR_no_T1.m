@@ -1,4 +1,4 @@
-function subject_record=batch_FLAIR_no_T1(Dir_code,Dir,subfolders,mode)
+function subject_record=batch_FLAIR_no_T1(Dir_code,Dir,subfolders,mode,copyLesionGeometry)
 %% Initialization
 % Identify the subfolders with sufficient images for specified registration
 subject_record=cell(length(subfolders)+1,3);
@@ -27,7 +27,7 @@ for i=1:length(subfolders)
     
     try
         % Call test mode for image registration of a single subject
-        sub_record=test_FLAIR_no_T1(Dir_code,Dir_img,mode,'record');
+        sub_record=test_FLAIR_no_T1(Dir_code,Dir_img,mode,'record',copyLesionGeometry);
         subject_record(i+1,2:3)=sub_record; 
     catch 
         fileID = fopen(strcat(Dir,'\',subfolders{i},'\','FAILED.TXT'), 'w');

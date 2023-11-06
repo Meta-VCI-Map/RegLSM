@@ -31,7 +31,8 @@
 (WriteTransformParametersEachIteration "false")
 (WriteResultImage "true")
 (CompressResultImage "true")
-(ResultImageFormat "nii")
+(ResultImageFormat "nii.gz")
+(ResultImagePixelType "float")
 (WriteResultImageAfterEachResolution "false") 
 (ShowExactMetricValue "false")
 

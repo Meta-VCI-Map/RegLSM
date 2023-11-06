@@ -1,4 +1,4 @@
-function sub_record=test_FLAIR_no_T1(Dir_code,Dir_img,mode,record)
+function sub_record=test_FLAIR_no_T1(Dir_code,Dir_img,mode,record,copyLesionGeometry)
 %% Initialization 
     sub_record=cell(1,2);
 
@@ -71,6 +71,11 @@ function sub_record=test_FLAIR_no_T1(Dir_code,Dir_img,mode,record)
         sub_record{2}='0';
         return;
     end
+
+    if copyLesionGeometry
+        copy_lesion_geometry(FLAIR, LESION);
+    end
+
     % Specify parameter files for registration
     if isempty(mode)
        reg_FLAIR_Rorden=['-p ',blanks(1),'"',Dir_code,'\Parameter\affine.txt','"',' -p ',blanks(1),'"',Dir_code,'\Parameter\bspline.txt','"'];

@@ -22,7 +22,7 @@ function varargout = RegLSM_test(varargin)
 
 % Edit the above text to modify the response to help RegLSM_test
 
-% Last Modified by GUIDE v2.5 28-Mar-2017 11:35:54
+% Last Modified by GUIDE v2.5 25-Sep-2023 16:24:25
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -136,7 +136,8 @@ if isfield(handles,'scheme')
    scheme=handles.scheme;
 else scheme=[];
 end
-Registration_elastix_test(Dir_img,scheme);
+copyLesionGeometry = handles.copyLesionGeometry.Value;
+Registration_elastix_test(Dir_img, scheme, copyLesionGeometry);
 
 
 
@@ -213,3 +214,12 @@ function Reg2Check_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes on button press in copyLesionGeometry.
+function copyLesionGeometry_Callback(hObject, eventdata, handles)
+% hObject    handle to copyLesionGeometry (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of copyLesionGeometry

@@ -24,6 +24,6 @@
 // Resampler specific
 (Resampler "DefaultResampler")
 (DefaultPixelValue 0.000000)
-(ResultImageFormat "nii")
+(ResultImageFormat "nii.gz")
 (ResultImagePixelType "short")
 (CompressResultImage "true")

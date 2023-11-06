@@ -1,4 +1,4 @@
-function sub_record=test_CT(Dir_code,Dir_img,record)
+function sub_record=test_CT(Dir_code,Dir_img,record,copyLesionGeometry)
 %% Initialization 
     sub_record=cell(1,2);
 
@@ -45,8 +45,12 @@ function sub_record=test_CT(Dir_code,Dir_img,record)
         sub_record{2}='0';
         return;
     end
-    % Specify parameter files for registration
 
+    if copyLesionGeometry
+        copy_lesion_geometry(CT, LESION);
+    end
+
+    % Specify parameter files for registration
     reg_CT_Rorden=['-p ',blanks(1),'"',Dir_code,'\Parameter\affine.txt','"',' -p ',blanks(1),'"',Dir_code,'\Parameter\bspline_CT.txt','"'];
    
     % Specify the location of intermediate Rorden template

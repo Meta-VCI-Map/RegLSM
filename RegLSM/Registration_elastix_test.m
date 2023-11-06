@@ -1,4 +1,4 @@
-function Registration_elastix_test(Dir_img,scheme)
+function Registration_elastix_test(Dir_img, scheme, copyLesionGeometry)
 Dir_code = pwd;
 %% Initialization for specific registration scheme
 if isempty(Dir_img)
@@ -11,19 +11,19 @@ elseif isempty(scheme)
 end
 % sub_record=[];
 if ~isempty(strfind(scheme,'DWI_with_T1'))
-    test_DWI_T1(Dir_code,Dir_img,[]);
+    test_DWI_T1(Dir_code,Dir_img,[],copyLesionGeometry);
 elseif ~isempty(strfind(scheme,'DWI_without_T1'))
-    test_DWI_no_T1(Dir_code,Dir_img,[]);
+    test_DWI_no_T1(Dir_code,Dir_img,[],copyLesionGeometry);
 elseif ~isempty(strfind(scheme,'FLAIR_with_T1'))&&isempty(strfind(scheme,'+'))
-    test_FLAIR_T1(Dir_code,Dir_img,[]);
+    test_FLAIR_T1(Dir_code,Dir_img,[],copyLesionGeometry);
 elseif ~isempty(strfind(scheme,'FLAIR_with_T1+'))
-    test_FLAIR_T1_plus(Dir_code,Dir_img,[]);
+    test_FLAIR_T1_plus(Dir_code,Dir_img,[],copyLesionGeometry);
 elseif ~isempty(strfind(scheme,'FLAIR_without_T1'))&&isempty(strfind(scheme,'+'))
-    test_FLAIR_no_T1(Dir_code,Dir_img,[],[]);
+    test_FLAIR_no_T1(Dir_code,Dir_img,[],[],copyLesionGeometry);
 elseif ~isempty(strfind(scheme,'FLAIR_without_T1+'))
-    test_FLAIR_no_T1(Dir_code,Dir_img,'+',[]);
+    test_FLAIR_no_T1(Dir_code,Dir_img,'+',[],copyLesionGeometry);
 elseif ~isempty(strfind(scheme,'CT'))
-    test_CT(Dir_code,Dir_img,[]);
+    test_CT(Dir_code,Dir_img,[],copyLesionGeometry);
 else 
     errordlg('The registration scheme has not been specified!');
     return;

@@ -1,4 +1,4 @@
-function sub_record=test_DWI_no_T1(Dir_code,Dir_img,record)
+function sub_record=test_DWI_no_T1(Dir_code,Dir_img,record,copyLesionGeometry)
 %% Initialization 
     sub_record=cell(1,2);   
 
@@ -70,6 +70,11 @@ function sub_record=test_DWI_no_T1(Dir_code,Dir_img,record)
         sub_record{2}='0';
         return;
     end
+
+    if copyLesionGeometry
+        copy_lesion_geometry(DWI, LESION);
+    end
+
     % Specify parameter files for registration
     reg_DWI_Rorden=['-p ',blanks(1),'"',Dir_code,'\Parameter\affine.txt','"',' -p ',blanks(1),'"',Dir_code,'\Parameter\bspline.txt','"'];
     
