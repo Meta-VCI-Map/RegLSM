@@ -103,12 +103,16 @@ function sub_record=test_FLAIR_T1(Dir_code,Dir_img,record)
     mkdir(Dir,'to_MNI');
 %% Writing elastix command for registration
     fid = fopen(strcat(Dir,'\batch\elastix_FLAIR_T1_SC.bat'),'wt');
+%     CMD_FLAIR_T1 = ['"',Dir_code,'\Elastix\elastix.exe' '"' ' -f' blanks(1) '"' T1 '"' blanks(1) '-m' blanks(1) '"' FLAIR '"' blanks(1) reg_FLAIR_T1 blanks(1) '-out' blanks(1) '"' strcat(Dir,'\FLAIR_to_T1') '"'];
     CMD_FLAIR_T1 = ['"',Dir_code,'\Elastix\elastix.exe' '"' ' -f' blanks(1) '"' T1 '"' blanks(1) '-m' blanks(1) '"' FLAIR '"' blanks(1) reg_FLAIR_T1 blanks(1) '-out' blanks(1) '"' strcat(Dir,'\FLAIR_to_T1') '"'];
-    fprintf(fid, '%s\n', CMD_FLAIR_T1);
+    %fprintf(fid, '%s\n', CMD_FLAIR_T1);
+    system(CMD_FLAIR_T1);
+%     CMD_T1_Rorden = ['"',Dir_code,'\Elastix\elastix.exe' '"' ' -f' blanks(1) '"' SC '"' blanks(1) '-m' blanks(1) '"' T1 '"' blanks(1) reg_T1_Rorden blanks(1) '-out' blanks(1) '"' strcat(Dir,'\T1_to_SC') '"'];
     CMD_T1_Rorden = ['"',Dir_code,'\Elastix\elastix.exe' '"' ' -f' blanks(1) '"' SC '"' blanks(1) '-m' blanks(1) '"' T1 '"' blanks(1) reg_T1_Rorden blanks(1) '-out' blanks(1) '"' strcat(Dir,'\T1_to_SC') '"'];
-    fprintf(fid, '%s\n', CMD_T1_Rorden);
+    %fprintf(fid, '%s\n', CMD_T1_Rorden);
+    system(CMD_T1_Rorden);
     fclose(fid);
-    winopen(strcat(Dir,'\batch\elastix_FLAIR_T1_SC.bat'));
+%     winopen(strcat(Dir,'\batch\elastix_FLAIR_T1_SC.bat'));
     disp('MATLAB continues after calling elastix.exe')
     
 
@@ -296,8 +300,10 @@ clc;
 fid = fopen(strcat(Dir,'\batch\transformix_to_MNI.bat'),'wt');
 mkdir(strcat(Dir,'\to_MNI'),'lesion');
 CMD_to_MNI=['"',Dir_code,'\Elastix\transformix.exe' '"' ' -in' blanks(1) '"' FLAIR '"' blanks(1) '-out' blanks(1) '"' strcat(Dir,'\to_MNI') '"' blanks(1) '-tp ' blanks(1) '"' strcat(Dir,'\to_MNI\to_MNI.txt') '"'];
-fprintf(fid, '%s\n', CMD_to_MNI);
+% fprintf(fid, '%s\n', CMD_to_MNI);
+system(CMD_to_MNI);
 CMD_to_MNI_lesion=['"',Dir_code,'\Elastix\transformix.exe' '"' ' -in' blanks(1) '"' LESION '"' blanks(1) '-out' blanks(1) '"' strcat(Dir,'\to_MNI\lesion') '"' blanks(1) '-tp ' blanks(1) '"' strcat(Dir,'\to_MNI\to_MNI_lesion.txt') '"'];
-fprintf(fid, '%s\n', CMD_to_MNI_lesion);
+system(CMD_to_MNI_lesion);
+% fprintf(fid, '%s\n', CMD_to_MNI_lesion);
 fclose(fid);
-winopen(strcat(Dir,'\batch\transformix_to_MNI.bat'));
+% winopen(strcat(Dir,'\batch\transformix_to_MNI.bat'));
