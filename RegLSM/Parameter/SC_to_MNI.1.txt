@@ -27,5 +27,5 @@
 (Resampler "DefaultResampler")
 (DefaultPixelValue 0.000000)
 (ResultImageFormat "mhd")
-(ResultImagePixelType "short")
+(ResultImagePixelType "float")
 (CompressResultImage "true")

@@ -1,4 +1,4 @@
-function sub_record=test_FLAIR_T1_plus(Dir_code,Dir_img,record)
+function sub_record=test_FLAIR_T1_plus(Dir_code,Dir_img,record,copyLesionGeometry)
 %% Initialization 
     sub_record=cell(1,3);     
     % Check if the input images is sufficient to perform the specified
@@ -86,6 +86,10 @@ function sub_record=test_FLAIR_T1_plus(Dir_code,Dir_img,record)
     elseif flair<1&&~isempty(record)
         sub_record{2}='0';
         return;
+    end
+
+    if copyLesionGeometry
+        copy_lesion_geometry(DWI, FLAIR);
     end
     
     % Specify parameter files for registration

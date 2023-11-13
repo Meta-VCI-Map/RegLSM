@@ -22,7 +22,7 @@ function varargout = RegLSM_batch(varargin)
 
 % Edit the above text to modify the response to help RegLSM_batch
 
-% Last Modified by GUIDE v2.5 28-Mar-2017 11:36:27
+% Last Modified by GUIDE v2.5 25-Sep-2023 16:26:36
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -142,8 +142,9 @@ if isfield(handles,'scheme')
    scheme=handles.scheme;
 else scheme=[];
 end
+copyLesionGeometry = handles.copyLesionGeometry.Value;
 % Start registration
-Registration_elastix_batch(Dir,scheme);
+Registration_elastix_batch(Dir, scheme, copyLesionGeometry);
 
 
 % --- Executes on selection change in Dir.
@@ -154,3 +155,12 @@ function Dir_Callback(hObject, eventdata, handles)
 
 % Hints: contents = cellstr(get(hObject,'String')) returns Dir contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from Dir
+
+
+% --- Executes on button press in copyLesionGeometry.
+function copyLesionGeometry_Callback(hObject, eventdata, handles)
+% hObject    handle to copyLesionGeometry (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of copyLesionGeometry

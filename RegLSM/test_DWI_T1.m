@@ -1,4 +1,4 @@
-function sub_record=test_DWI_T1(Dir_code,Dir_img,record)
+function sub_record=test_DWI_T1(Dir_code,Dir_img,record,copyLesionGeometry)
 %% Initialization 
     sub_record=cell(1,3);   
     % Check if the input images is sufficient to perform the specified
@@ -94,6 +94,10 @@ function sub_record=test_DWI_T1(Dir_code,Dir_img,record)
     elseif dwi<1&&~isempty(record)
         sub_record{2}='0';
         return;
+    end
+
+    if copyLesionGeometry
+        copy_lesion_geometry(DWI, LESION);
     end
     
     % Specify parameter files for registration
